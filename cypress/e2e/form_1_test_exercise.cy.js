@@ -12,14 +12,14 @@ Tasks done during VS Code live demo:
 5 - Find and replace username2 to username
 6 - autoformat the code, using Shift + Alt + F
  */
-
+<button.submit_button>
 describe('This is first test suite', () => {
     it('User can submit data only when valid mandatory values are added', () => {
-        // cy.get('#username2').type('Something')
-        // cy.get('[data-testid="phoneNumberTestId"]').type('10203040')
-        // cy.get('input[name="password"]').type('MyPass123')
-        // cy.get('[name="confirm"]').type('MyPass123')
-        //in order to activate submit button, user has to click somewhere outside the input field
+        cy.get('#username').type('L5')
+        cy.get('[data-testid="phoneNumberTestId"]').type('55557777')
+        cy.get('input[name="password"]').type('MyPass123')
+        cy.get('input[name="password"]').type('MyPass123')
+        cy.get('[name="confirm"]').type('MyPass123')   
         cy.get('h2').contains('Password').click()
 
         cy.get('.submit_button').should('be.enabled');

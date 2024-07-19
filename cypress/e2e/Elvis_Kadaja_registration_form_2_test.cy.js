@@ -85,7 +85,7 @@ describe('Section 1: Functional tests by L5', () => {
         cy.get('#input_error_message').should('be.visible').should('contain', 'Mandatory input field is not valid or empty!')
     })
     /*
-    Assignement 5: create more visual tests
+    Assignement 5: create more visual tests.
     */
 
     describe('Section 2: Visual tests by L5', () => {
