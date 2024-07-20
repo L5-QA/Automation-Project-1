@@ -54,8 +54,8 @@ describe('Section 1: Functional tests by L5', () => {
         cy.get('[data-testid="phoneNumberTestId"]').type('555666777')
         cy.get('input[type="radio"]').eq(2).check().should("be.checked");
         cy.get('input[type="checkbox"]').eq(1).check().should("be.checked");
-        cy.get('#cars').select('Mercedes')
-        cy.get('#animal').select('Crocodile')
+        cy.get('#cars').select('Saab')
+        cy.get('#animal').select('Dog')
         cy.get('input[name="password"]').type('Pass777');
         cy.get("#confirm").type("Pass777");
         cy.get("h2").contains("Password").click();
@@ -107,22 +107,22 @@ describe('Section 1: Functional tests by L5', () => {
 
         it('Check navigation part', () => {
             cy.get('nav').children().should('have.length', 2)
-            cy.get('nav').siblings('h1').should('have.text', 'Registration form number 2 by Elvis')
+            cy.get('nav').siblings('h1').should('have.text', 'Registration form number 2')
             cy.get('nav').children().eq(0).should('be.visible').and('have.attr', 'href', 'registration_form_1.html').click()
             cy.url().should('contain', '/registration_form_1.html')
             cy.go('back')
-            cy.log('Back again in registration form 2 by Elvis')
+            cy.log('Back again in registration form 2')
         })
 
         it('Check navigation part, second link', () => {
             cy.get('nav').children().should('have.length', 2)
-            cy.get('nav').siblings('h1').should('have.text', 'Registration form number 2 by Elvis')
+            cy.get('nav').siblings('h1').should('have.text', 'Registration form number 2')
             cy.get('nav').children().eq(1).should('be.visible')
                 .and('have.attr', 'href', 'registration_form_3.html')
                 .click()
             cy.url().should('contain', '/registration_form_3.html')
             cy.go('back')
-            cy.log('Back again in registration form 2 by Elvis')
+            cy.log('Back again in registration form 2 ')
         })
 
         it('Check that radio button list is correct', () => {
@@ -167,46 +167,41 @@ describe('Section 1: Functional tests by L5', () => {
             cy.get('#cars').select(2).screenshot('Cars drop-down')
             cy.screenshot('Full page screenshot')
 
-            cy.get('#cars').children().should('have.length',5)
-            cy.get('#cars').find('option').should('have.length',5)
+            cy.get('#cars').children().should('have.length',4)
+            cy.get('#cars').find('option').should('have.length',4)
             cy.get('#cars').find('option').eq(0).should('have.text', 'Volvo')
             cy.get('#cars').find('option').eq(1).should('have.text', 'Saab')
-            cy.get('#cars').find('option').eq(2).should('have.text', 'Mercedes')
-            cy.get('#cars').find('option').eq(3).should('have.text', 'Opel')
-            cy.get('#cars').find('option').eq(4).should('have.text', 'Audi')
+            cy.get('#cars').find('option').eq(2).should('have.text', 'Opel')
+            cy.get('#cars').find('option').eq(3).should('have.text', 'Audi')
 
             // Advanced level how to check the content of the Cars dropdown
             cy.get('#cars').find('option').then(options => {
                 const actual = [...options].map(option => option.value)
-                expect(actual).to.deep.eq(['volvo', 'saab', 'mercedes', 'opel', 'audi'])
+                expect(actual).to.deep.eq(['volvo', 'saab', 'opel', 'audi'])
             })
         })
         it('Favorite animal dropdown is correct', () => {
 
             cy.get('#animal').select(2).screenshot('Animal drop-down')
             cy.screenshot('Full page screenshot')
-            cy.get('#animal').find('option').should('have.length', 8)
+            cy.get('#animal').find('option').should('have.length', 6)
             cy.get('#animal').find('option').eq(0).should('have.text', 'Dog')
             cy.get('#animal').find('option').eq(1).should('have.text', 'Cat')
-            cy.get('#animal').find('option').eq(2).should('have.text', 'Crocodile')
-            cy.get('#animal').find('option').eq(3).should('have.text', 'Snake')
-            cy.get('#animal').find('option').eq(4).should('have.text', 'Hippo')
-            cy.get('#animal').find('option').eq(5).should('have.text', 'NossKallis')
-            cy.get('#animal').find('option').eq(6).should('have.text', 'Cow')
-            cy.get('#animal').find('option').eq(7).should('have.text', 'Horse')
+            cy.get('#animal').find('option').eq(2).should('have.text', 'Snake')
+            cy.get('#animal').find('option').eq(3).should('have.text', 'Hippo')
+            cy.get('#animal').find('option').eq(4).should('have.text', 'Cow')
+            cy.get('#animal').find('option').eq(5).should('have.text', 'Horse')
 
             // Advanced level how to check the content of the animals dropdown
             cy.get('#animal').find('option').then(options => {
                 const actual = [...options].map(option => option.value);
-                expect(actual).to.deep.eq(['dog', 'cat', 'croco', 'snake', 'hippo', 'noss', 'cow', 'mouse']);
+                expect(actual).to.deep.eq(['dog', 'cat', 'snake', 'hippo', 'cow', 'mouse']);
             });
+            })
+            })
+            })
 
-        })
-
-    })
-})
-
-function inputValidData(L5L5) {
+ function inputValidData(L5L5) {
     cy.log("Username will be filled");
     cy.get('input[data-testid="user"]').type("L5L5");
     cy.get("#email").type("lviis@lviis.ee");
